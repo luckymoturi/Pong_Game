@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pong Game</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+            margin: 0;
+        }
+        canvas {
+            border: 1px solid white;
+        }
+        #replayButton {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 20px;
+            background-color: white;
+            color: black;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="pongCanvas" width="600" height="400"></canvas>
+    <button id="replayButton" onclick="replayGame()">Replay</button>
+    <script src="pong.js"></script>
+</body>
+</html>
