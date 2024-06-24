@@ -132,14 +132,23 @@ function moveBall() {
     }
 }
 function moveAI() {
-    // Simple AI: Follow the ball vertically
-    if (aiPaddle.y + aiPaddle.height / 2 < ball.y) {
-        aiPaddle.dy = 2;
-    } else {
-        aiPaddle.dy = -2;
+    // Predictive AI: Move towards the predicted position of the ball
+    const aiPaddleCenter = aiPaddle.y + aiPaddle.height / 2;
+    const ballCenter = ball.y;
+
+    // Calculate the distance between AI paddle center and ball center
+    const deltaY = ballCenter - aiPaddleCenter;
+
+    // Adjust the AI paddle's movement based on the distance
+    if (deltaY > 0) {
+        aiPaddle.dy = Math.min(deltaY, 4); // Limit the maximum speed to 4
+    } else if (deltaY < 0) {
+        aiPaddle.dy = Math.max(deltaY, -4); // Limit the minimum speed to -4
     }
+
     movePaddle(aiPaddle);
 }
+
 
 
 function drawGameOver() {
