@@ -131,8 +131,8 @@ function moveBall() {
         ball.dx *= -1;
     }
 }
-
 function moveAI() {
+    // Simple AI: Follow the ball vertically
     if (aiPaddle.y + aiPaddle.height / 2 < ball.y) {
         aiPaddle.dy = 2;
     } else {
@@ -140,6 +140,7 @@ function moveAI() {
     }
     movePaddle(aiPaddle);
 }
+
 
 function drawGameOver() {
     ctx.fillStyle = "red";
@@ -164,10 +165,17 @@ function update() {
     if (isGameOver) {
         return;
     }
-    movePaddle(playerPaddle);
-    moveBall();
-    moveAI();
+    movePaddle(playerPaddle); // Move player's paddle based on input
+    moveAI(); // Move AI paddle
+    moveBall(); // Move the ball
 }
+
+function gameLoop() {
+    update();
+    draw();
+    animationFrameId = requestAnimationFrame(gameLoop);
+}
+
 
 function gameLoop() {
     update();
